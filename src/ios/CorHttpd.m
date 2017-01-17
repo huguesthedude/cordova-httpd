@@ -31,8 +31,6 @@
 
 @end
 
-@implementation CorHttpd
-
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
@@ -49,6 +47,8 @@
 
 #define IP_LOCALHOST        @"127.0.0.1"
 #define IP_ANY              @"0.0.0.0"
+
+@implementation CorHttpd
 
 - (NSString *)getIPAddress:(BOOL)preferIPv4
 {
