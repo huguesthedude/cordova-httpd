@@ -103,8 +103,8 @@ public class WebServer extends NanoHTTPD
 			
 	
 		// HL - CORS
-		response.addHeader("Access-Control-Allow-Origin", connection.getHeaderField("*"));
-		response.addHeader("Access-Control-Allow-Methods", connection.getHeaderField("GET, POST, DELETE, PUT"));
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
 
 			
                     return response;
