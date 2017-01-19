@@ -100,6 +100,13 @@ public class WebServer extends NanoHTTPD
                         response.addHeader("Last-Modified", connection.getHeaderField("Last-Modified"));
                     if (connection.getHeaderField("Cache-Control") != null)
                         response.addHeader("Cache-Control", connection.getHeaderField("Cache-Control"));
+			
+	
+		// HL - CORS
+		response.addHeader("Access-Control-Allow-Origin", connection.getHeaderField("*"));
+		response.addHeader("Access-Control-Allow-Methods", connection.getHeaderField("GET, POST, DELETE, PUT"));
+
+			
                     return response;
                 } else {
                     return serveFile( newURI, header, (AndroidFile) customPath, true );
