@@ -1929,6 +1929,10 @@ static NSMutableArray *recentNonces;
 	// Add server capability headers
 	[response setHeaderField:@"Accept-Ranges" value:@"bytes"];
 	
+	// HL - CORS
+	[response setHeaderField:@"Access-Control-Allow-Origin" value:@"*"];
+	[response setHeaderField:@"Access-Control-Allow-Methods" value:@"GET, POST, DELETE, PUT"];
+
 	// Add optional response headers
 	if ([httpResponse respondsToSelector:@selector(httpHeaders)])
 	{
@@ -1981,7 +1985,11 @@ static NSMutableArray *recentNonces;
 	
 	// Add server capability headers
 	[response setHeaderField:@"Accept-Ranges" value:@"bytes"];
-	
+		
+	// HL - CORS
+	[response setHeaderField:@"Access-Control-Allow-Origin" value:@"*"];
+	[response setHeaderField:@"Access-Control-Allow-Methods" value:@"GET, POST, DELETE, PUT"];
+
 	// Add optional response headers
 	if ([httpResponse respondsToSelector:@selector(httpHeaders)])
 	{
