@@ -139,6 +139,21 @@ public class CorHttpd extends CordovaPlugin {
 	                delayCallback.success( url );
 				}
             }
+		
+		@Override
+		public void run() {
+  			String errmsg = __startServer();
+			if (errmsg.length() > 0) {
+  				delayCallback.error( errmsg );
+  			} else {
+				if (localhost_only) {
+					url = "http://127.0.0.1:" + port;
+				} else {
+					url = "http://" + __getLocalIpAddress() + ":" + port;
+				}
+				delayCallback.success( url );
+  			}
+		}
         });
         
         return null;
@@ -180,7 +195,7 @@ public class CorHttpd extends CordovaPlugin {
             }
             
     		if(localhost_only) {
-    			InetSocketAddress localAddr = InetSocketAddress.createUnresolved("127.0.0.1", port);
+			InetSocketAddress localAddr = new InetSocketAddress(InetAddress.getByAddress(new byte[]{127,0,0,1}), port);
     			server = new WebServer(localAddr, f, customPaths);
     		} else {
     			server = new WebServer(port, f, customPaths);
